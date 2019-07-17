@@ -1,0 +1,34 @@
+INSTALL COMPOSER
+INSTALL SYMFONY
+
+CREATE A PROJECT
+composer create-project symfony/website-skeleton Annonces
+
+STAR THE SERVER
+php bin/console server:run
+
+CREATE A DATABASE
+php bin/console doctrine:database:create
+
+MAKE AN ENTITY (TABLE)
+php bin/console make:entity annonces
+
+PREPARE THE MIGRATION
+php bin/console make:migration
+
+MAKE THE MIGRATION
+php bin/console doctrine:migrations:migrate
+
+INSTALLING PACKAGE FIXTURES (for populating the database)
+composer require orm-fixtures --devs
+
+MAKE A FIXTURES
+php bin/console make:fixtures
+
+LOAD FIXTURES
+php bin/console doctrine:fixtures:load
+
+INSTALL FAKER PHP (to fill fake data)
+composer require fzaninotto/faker
+
+
