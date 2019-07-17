@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AnnoncesController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+
+    <h1>Nouvelle Annonce</h1>
+
+    {{ form_start(form) }}
+
+    {{ form_end(form) }}
+{# 
+    <div class="row-md-12">
+                
+        <div class="form-group">
+            <label class="col-form-label" for="inputDefault">Titre</label>
+            <input type="text" class="form-control" placeholder="My title" id="titre">
+        </div>
+        <div class="form-group">
+            <label class="col-form-label" for="inputDefault">Prix</label>
+            <input type="text" class="form-control" placeholder="1000" id="prix">
+        </div>
+        <div class="form-group">
+            <label class="col-form-label" for="inputDefault">Description</label>
+            <input type="text" class="form-control" placeholder="This is my description" id="description">
+        </div>
+        <div class="form-group">
+            <label class="col-form-label" for="inputDefault">Path</label>
+            <input type="text" class="form-control" placeholder="http://something.com" id="path">
+        </div>
+
+        <div style="width: 100%; float: right;">
+            <button type="button" class="btn btn-primary" style="float: right;">Save</button> 
+        </div>
+
+    </div> #}
+
+</div>
+{% endblock %}

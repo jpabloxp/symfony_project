@@ -23,6 +23,25 @@ class AnnoncesController extends AbstractController
     }
 
     /**
+     * @Route("/annonces/new", name="nouvelle_annonce")
+     */
+    public function nouvelleAnnonce(AnnoncesRepository $repo){
+
+        $annonce = new Annonces();
+
+        $form = $this->createFormBuilder($annonce)
+                    ->add('titre')
+                    ->add('prix')
+                    ->add('description')
+                    ->add('photo')
+                    ->getForm();
+        
+        return $this->render('annonces/new.html.twig', [
+            'form' => $form->createView()
+        ]);
+    }
+
+    /**
      * @Route("/annonce/{id}", name="une_seule_annonce")
      */
     public function uneSeuleAnnonce($id, AnnoncesRepository $repo){

@@ -15,12 +15,12 @@
     <div class="row">
         {% for annonce in annonces %}
             
-            <div class="card col-md-12">
+            <div class="card col-md-12" style="height: 30%; margin-top: 2%;">
                 <div class="card-header">
                     Annonce {{ annonce.id }}: {{ annonce.titre }}
                 </div>
 
-                <img src="{{ annonce.photo }}" style="height: 200px; max-width: 70%; padding-left: 30%;">
+                <img src="{{ annonce.photo }}" style="height: 45%; max-width: 80%; padding-left: 20%; padding-top: 2%;">
                 <div class="card-body">
                     <h2>Prix: {{ annonce.prix}}</h2>
                     <p><b>Description:</b><br>{{ annonce.description }}</p>
