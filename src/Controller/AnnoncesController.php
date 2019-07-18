@@ -2,10 +2,13 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Annonces;
+use App\Form\AnnoncesType;
 use App\Repository\AnnoncesRepository;
+use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
+use Doctrine\Common\Persistence\ObjectManager;
 
 class AnnoncesController extends AbstractController
 {
@@ -25,16 +28,19 @@ class AnnoncesController extends AbstractController
     /**
      * @Route("/annonces/new", name="nouvelle_annonce")
      */
-    public function nouvelleAnnonce(AnnoncesRepository $repo){
+    public function nouvelleAnnonce(Request $request, ObjectManager $manager){
 
         $annonce = new Annonces();
 
-        $form = $this->createFormBuilder($annonce)
-                    ->add('titre')
-                    ->add('prix')
-                    ->add('description')
-                    ->add('photo')
-                    ->getForm();
+        $form = $this->createForm(AnnoncesType::class, $annonce);
+
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()){
+            
+            $manager->persist($annonce);
+            $manager->flush();
+        }
         
         return $this->render('annonces/new.html.twig', [
             'form' => $form->createView()

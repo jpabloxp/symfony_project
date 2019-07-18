@@ -2,9 +2,10 @@
 
 namespace App\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\AnnoncesRepository")
@@ -19,8 +20,14 @@ class Annonces
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
+    * @ORM\Column(type="string", length=255, nullable=true)
+    * @Assert\Length(
+    *      min = 2,
+    *      max = 20,
+    *      minMessage = "Your first name must be at least {{ limit }} characters long",
+    *      maxMessage = "Your first name cannot be longer than {{ limit }} characters"
+    * )
+    */
     private $titre;
 
     /**
